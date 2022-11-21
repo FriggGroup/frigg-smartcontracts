@@ -12,7 +12,7 @@ on:
 
   repository_dispatch:
     types:
-      - webhook
+      - webhook_testnet
 
 env:
     INFURA_KEY: ${{ secrets.INFURA_KEY }}

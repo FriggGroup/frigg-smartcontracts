@@ -8,7 +8,7 @@ on:
 
   repository_dispatch:
     types:
-      - webhook
+      - webhook_mainnet
 
 env:
     INFURA_KEY: ${{ secrets.INFURA_KEY }}
