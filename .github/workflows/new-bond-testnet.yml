@@ -6,7 +6,7 @@ name: Create new bond (testnet)
 on:
   push:
     branches:
-      - feature/token
+      - main
 
   workflow_dispatch:
 
