@@ -6,7 +6,7 @@ name: Create new bond (testnet)
 on:
   push:
     branches:
-      - main
+      - feature/token
 
   workflow_dispatch:
 
@@ -19,11 +19,11 @@ env:
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
   ETHERSCAN_URL: ${{ secrets.ETHERSCAN_URL }}
   TOKEN_MULTISIG: ${{ secrets.TOKEN_MULTISIG }}
-  ROUTER_ADDRESS: ${{ '' }}
-  NAME: ${{ '' }}
-  SYMBOL: ${{ '' }}
-  AMOUNT: ${{ '' }}
-  TERMS: ${{ '' }}
+  ROUTER_ADDRESS: ${{ github.event.client_payload.routerAddress }}
+  NAME: ${{ github.event.client_payload.name }}
+  SYMBOL: ${{ github.event.client_payload.symbol }}
+  AMOUNT: ${{ github.event.client_payload.amount }}
+  TERMS: ${{ github.event.client_payload.terms }}
 
 jobs:
   deploy:
@@ -34,7 +34,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: "Test"
+        shell: powershell
+        run: >
+          Write-Host "Name: ${{ env.NAME }}"
+
       - name: "Run"
+        if: ${{ false }}
         run: |
           npm install
           npx hardhat run scripts/deploy-token.ts --network goerli
