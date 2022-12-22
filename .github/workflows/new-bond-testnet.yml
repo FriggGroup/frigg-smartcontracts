@@ -19,6 +19,7 @@ env:
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
   ETHERSCAN_URL: ${{ secrets.ETHERSCAN_URL }}
   TOKEN_MULTISIG: ${{ secrets.TOKEN_MULTISIG }}
+  ID: ${{ github.event.client_payload.id }}
   ROUTER_ADDRESS: ${{ github.event.client_payload.routerAddress }}
   NAME: ${{ github.event.client_payload.name }}
   SYMBOL: ${{ github.event.client_payload.symbol }}
